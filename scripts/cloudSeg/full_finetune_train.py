@@ -34,7 +34,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--config",
         type=Path,
-        default=Path("/mnt/data1/dinov2-seg/scripts/cloudSeg/configs/full_finetune_vitg16.json"),
+        default=REPO_ROOT / "scripts/cloudSeg/configs/full_finetune_vitg16.json",
         help="Path to the JSON config file.",
     )
     parser.add_argument("--output-dir", type=Path, required=True, help="Run output directory.")

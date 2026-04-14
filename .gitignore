@@ -13,3 +13,4 @@ dist/
 # my projects
 pretrained/
 *.pth
+outputs/

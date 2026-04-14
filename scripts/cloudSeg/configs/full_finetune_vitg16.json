@@ -1,7 +1,7 @@
 {
-  "train_root": "/mnt/data1/Dataset/CloudSegmentation/train1",
-  "val_root": "/mnt/data1/Dataset/CloudSegmentation/val1",
-  "weights": "/mnt/data1/dinov2-seg/pretrained/dinov2_vitg14_reg4_pretrain.pth",
+  "train_root": "/opt/data/private/Dataset/CloudSegmentation/train1",
+  "val_root": "/opt/data/private/Dataset/CloudSegmentation/val1",
+  "weights": "/opt/data/private/dinov2-seg/pretrained/dinov2_vitg14_reg4_pretrain.pth",
   "arch": "vit_giant2",
   "num_register_tokens": 4,
   "in_chans": 17,
@@ -10,9 +10,9 @@
   "image_size": 256,
   "pad_to_size": 256,
   "patch_size": 16,
-  "batch_size": 1,
+  "batch_size": 4,
   "epochs": 200,
-  "num_workers": 4,
+  "num_workers": 8,
   "lr": 1e-4,
   "weight_decay": 0.05,
   "scheduler": {
