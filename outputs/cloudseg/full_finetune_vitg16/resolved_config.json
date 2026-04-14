@@ -1,0 +1,36 @@
+{
+  "train_root": "/mnt/data1/Dataset/CloudSegmentation/train1",
+  "val_root": "/mnt/data1/Dataset/CloudSegmentation/val1",
+  "weights": "/mnt/data1/dinov2-seg/pretrained/dinov2_vitg14_reg4_pretrain.pth",
+  "arch": "vit_giant2",
+  "num_register_tokens": 4,
+  "in_chans": 17,
+  "num_classes": 10,
+  "ignore_index": 255,
+  "image_size": 256,
+  "pad_to_size": 256,
+  "patch_size": 16,
+  "batch_size": 1,
+  "epochs": 200,
+  "num_workers": 4,
+  "lr": 0.0001,
+  "weight_decay": 0.05,
+  "scheduler": {
+    "name": "cosine",
+    "warmup_ratio": 0.05,
+    "min_lr": 1e-06
+  },
+  "amp": "bf16",
+  "ce_weight": 0.5,
+  "dice_weight": 0.5,
+  "lambda_uncertainty": 0.5,
+  "device": "cuda",
+  "seed": 42,
+  "normalization_mode": "dataset_minmax",
+  "save_every_epochs": 25,
+  "eval_every_epochs": 1,
+  "wandb": {
+    "project": "cloudseg-dinov2",
+    "name": "full-finetune_vitg16-17ch-linear"
+  }
+}

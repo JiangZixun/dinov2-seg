@@ -9,3 +9,7 @@ dist/
 *.swp
 
 .vscode/
+
+# my projects
+pretrained/
+*.pth
