@@ -1,0 +1,45 @@
+{
+  "train_root": "/mnt/data1/Dataset/CloudSegmentation/train1",
+  "val_root": "/mnt/data1/Dataset/CloudSegmentation/val1",
+  "weights": "/mnt/data1/dinov2-seg/pretrained/dinov2_vitg14_reg4_pretrain.pth",
+  "arch": "vit_giant2",
+  "num_register_tokens": 4,
+  "in_chans": 17,
+  "num_classes": 10,
+  "ignore_index": 255,
+  "image_size": 256,
+  "pad_to_size": 256,
+  "patch_size": 16,
+  "batch_size": 4,
+  "epochs": 200,
+  "num_workers": 4,
+  "lr": 5e-4,
+  "weight_decay": 0.01,
+  "scheduler": {
+    "name": "cosine",
+    "warmup_ratio": 0.05,
+    "min_lr": 1e-6
+  },
+  "amp": "bf16",
+  "ce_weight": 0.5,
+  "dice_weight": 0.5,
+  "lambda_uncertainty": 0.5,
+  "device": "cuda",
+  "seed": 42,
+  "normalization_mode": "dataset_minmax",
+  "save_every_epochs": 50,
+  "eval_every_epochs": 1,
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": ["qkv", "proj", "w12", "w3"],
+    "train_decode_head": true,
+    "train_patch_embed": false,
+    "train_norm": false
+  },
+  "wandb": {
+    "project": "cloudseg-dinov2",
+    "name": "lora_vitg16_linear"
+  }
+}
