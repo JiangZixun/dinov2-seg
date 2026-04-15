@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ROOT="/mnt/data1/dinov2-seg"
-CONFIG="${CONFIG:-/mnt/data1/dinov2-seg/scripts/cloudSeg/configs/full_finetune_vitg16.json}"
-OUTPUT_DIR="${OUTPUT_DIR:-/mnt/data1/dinov2-seg/outputs/cloudseg/full_finetune_vitg16}"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+CONFIG="${CONFIG:-$REPO_ROOT/scripts/cloudSeg/configs/full_finetune_vitg16.json}"
+OUTPUT_DIR="${OUTPUT_DIR:-$REPO_ROOT/outputs/cloudseg/full_finetune_vitg16}"
 WANDB_FLAG=""
 RESUME_FLAG=""
 AUTO_RESUME_FLAG=""
@@ -29,7 +29,7 @@ if [[ "${AUTO_RESUME:-1}" == "0" ]]; then
   AUTO_RESUME_FLAG="--no-auto-resume"
 fi
 
-python scripts/cloudSeg/full_finetune_train.py \
+/opt/conda/envs/qwen3/bin/python scripts/cloudSeg/full_finetune_train.py \
   --output-dir "$OUTPUT_DIR" \
   --config "$CONFIG" \
   $RESUME_FLAG \
