@@ -422,24 +422,27 @@ def main() -> None:
         raise ValueError("image_size must be divisible by patch_size")
     if config.get("pad_to_size") is not None and int(config["pad_to_size"]) % int(config["patch_size"]) != 0:
         raise ValueError("pad_to_size must be divisible by patch_size")
+    model_image_size = int(config["pad_to_size"]) if config.get("pad_to_size") is not None else int(config["image_size"])
 
     train_loader = build_dataloader(config["train_root"], train=True, config=config)
     val_loader = build_dataloader(config["val_root"], train=False, config=config) if config.get("val_root") else None
 
     model = DinoCloudSegModel(
         arch_name=config["arch"],
-        image_size=int(config["pad_to_size"]),
+        image_size=model_image_size,
         patch_size=int(config["patch_size"]),
         in_chans=int(config["in_chans"]),
         num_classes=int(config["num_classes"]),
         num_register_tokens=int(config["num_register_tokens"]),
+        decoder_type=str(config.get("decoder", {}).get("name", "linear")),
+        decoder_cfg=config.get("decoder"),
     )
     load_info = load_adapted_pretrained(
         model.backbone,
         str(config["weights"]),
         new_in_chans=int(config["in_chans"]),
         new_patch_size=int(config["patch_size"]),
-        image_size=int(config["pad_to_size"]),
+        image_size=model_image_size,
         num_register_tokens=int(config["num_register_tokens"]),
     )
     print(

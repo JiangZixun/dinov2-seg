@@ -1,7 +1,7 @@
 {
-  "train_root": "/mnt/data1/Dataset/CloudSegmentation/train1",
-  "val_root": "/mnt/data1/Dataset/CloudSegmentation/val1",
-  "weights": "/mnt/data1/dinov2-seg/pretrained/dinov2_vitg14_reg4_pretrain.pth",
+  "train_root": "/opt/data/private/Dataset/CloudSegmentation/train1",
+  "val_root": "/opt/data/private/Dataset/CloudSegmentation/val1",
+  "weights": "/opt/data/private/dinov2-seg/pretrained/dinov2_vitg14_reg4_pretrain.pth",
   "arch": "vit_giant2",
   "num_register_tokens": 4,
   "in_chans": 17,

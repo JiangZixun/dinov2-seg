@@ -10,11 +10,18 @@
   "image_size": 256,
   "pad_to_size": 256,
   "patch_size": 16,
-  "batch_size": 4,
+  "decoder": {
+    "name": "fpn",
+    "out_channels": 256,
+    "fusion_channels": 256,
+    "block_indices": [9, 19, 29, 39],
+    "scale_factors": [4.0, 2.0, 1.0, 0.5]
+  },
+  "batch_size": 8,
   "epochs": 200,
-  "num_workers": 4,
-  "lr": 5e-4,
-  "weight_decay": 0.01,
+  "num_workers": 8,
+  "lr": 8e-5,
+  "weight_decay": 0.05,
   "scheduler": {
     "name": "cosine",
     "warmup_ratio": 0.05,
@@ -27,19 +34,10 @@
   "device": "cuda",
   "seed": 42,
   "normalization_mode": "dataset_minmax",
-  "save_every_epochs": 50,
+  "save_every_epochs": 25,
   "eval_every_epochs": 1,
-  "lora": {
-    "rank": 16,
-    "alpha": 32,
-    "dropout": 0.05,
-    "target_modules": ["qkv", "proj", "w12", "w3"],
-    "train_decode_head": true,
-    "train_patch_embed": false,
-    "train_norm": false
-  },
   "wandb": {
     "project": "cloudseg-dinov2",
-    "name": "lora_vitg16_linear"
+    "name": "full-finetune_vitg16-17ch-fpn"
   }
 }
